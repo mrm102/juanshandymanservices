@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juan's Painting and Handyman Services</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 1em 0;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header nav ul {
+            list-style-type: none;
+            padding: 0;
+            display: inline-block;
+            margin: 0;
+        }
+
+        header nav ul li {
+            display: inline;
+            margin: 0 1em;
+        }
+
+        header nav ul li a,
+        #langButton {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        header nav ul li a:hover,
+        #langButton:hover {
+            color: #F08000;
+        }
+
+        #langButton {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
+            margin-left: 1em;
+        }
+
+        #musicButton {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.5em;
+            color: white;
+            margin-left: 1em;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .right {
+            margin-left: auto;
+        }
+
+        main {
+            padding-top: 6em; /* Adjust based on header height */
+        }
+
+        section {
+            margin-bottom: 0;
+        }
+
+        #home {
+            background-color: white;
+            color: black;
+            text-align: center;
+            padding: 5em 0;
+        }
+
+        #homeTitle {
+            font-size: 2.5em;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        #about {
+            display: flex;
+            height: 620px;
+            margin-bottom: 0;
+        }
+
+        #about .left {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #about .left .gallery {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #fff;
+            border: none;
+        }
+
+        #about .left .gallery-item {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transition: opacity 1s ease-in-out;
+        }
+
+        #about .left .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border: none;
+        }
+
+        #about .right {
+            flex: 1;
+            background-color: silver;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1em;
+            color: white;
+        }
+
+        #about h2 {
+            font-size: 2.5em;
+            text-transform: uppercase;
+        }
+
+        #about p {
+            font-size: 1.2em;
+        }
+
+        #projects {
+            text-align: center;
+            background-color: #f4f4f4;
+            padding: 2em 0;
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+        #projects h2 {
+            font-size: 2.5em;
+            color: #333;
+            text-transform: uppercase;
+            margin: 0;
+            padding: 0;
+        }
+
+        #projects p {
+            font-size: 1.2em;
+            color: #555;
+            margin-top: 0.5em;
+            margin-bottom: 2em;
+        }
+
+        .projects-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .gallery {
+            position: relative;
+            width: 45%;
+            height: 450px;
+            overflow: hidden;
+            background-color: #fff;
+            border: none;
+        }
+
+        .gallery-item {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border: none;
+        }
+
+        .gallery-item.active {
+            opacity: 1;
+        }
+
+        .gallery-item:not(.active) {
+            opacity: 0;
+        }
+
+        .before-after-label {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #333;
+            margin: 0 0 1em;
+            text-transform: uppercase;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 10%;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 2.9em 0;
+            font-size: 0.8em;
+        }
+
+        .contact-info {
+            font-size: 1.2em;
+        }
+
+        .services-list ul {
+            list-style-type: disc;
+            margin-left: 2em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 id="title">JUAN'S PAINTING AND HANDYMAN SERVICES</h1>
+        <nav>
+            <ul>
+                <li><a href="#home" id="navHome">Home</a></li>
+                <li><a href="#about" id="navAbout">About Us</a></li>
+                <li><a href="#projects" id="navProjects">Projects</a></li>
+                <li class="right">
+                    <button id="langButton">Español</button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="home">
+            <h2 id="homeTitle">Home</h2>
+            <p id="homeText">Welcome to our website. We are a small construction team dedicated to quality and excellence.</p>
+        </section>
+        <section id="about">
+            <div class="left">
+                <div class="gallery" id="aboutGallery">
+                    <div class="gallery-item active">
+                        <img src="construction2.jpg" alt="About Image 1">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="construction3.jpg" alt="About Image 2">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="construction4.jpg" alt="About Image 3">
+                    </div>
+		    <div class="gallery-item">
+                        <img src="project5.jpg" alt="Project Image 5">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="project6.jpg" alt="Project Image 6">
+                    </div>
+		   <div class="gallery-item">
+                        <img src="project3.jpg" alt="Project Image 3">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="project4.jpg" alt="Project Image 4">
+                    </div>
+                </div>
+            </div>
+            <div class="right">
+                <div>
+                    <h2 id="aboutTitle">About Us</h2>
+                    <p id="aboutText">Learn more about our team and our work.</p>
+                    <div class="services-list">
+                        <p>We offer:</p>
+                        <ul>
+                            <li>Ceramic</li>
+                            <li>Paint</li>
+                            <li>Tape</li>
+                            <li>Sheetrock</li>
+                            <li>Frame</li>
+                            <li>Electricity</li>
+                            <li>Plumbing</li>
+                            <li>Drywall</li>
+                            <li>Carpentry</li>
+                            <li>Tiles</li>
+                            <li>And more...</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="projects">
+            <h2 id="projectsTitle">Projects</h2>
+            <p id="projectsText">Here are some of our recent projects.</p>
+            <p class="before-after-label">
+    <span id="beforeLabel">During</span>
+    <span id="afterLabel">After</span>
+</p>
+            <div class="projects-container">
+                <div class="gallery" id="gallery1">
+                    <div class="gallery-item active">
+                        <img src="project8.jpg" alt="Project Image 8">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="project9.jpg" alt="Project Image 9">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="1.jpg" alt="After 1">
+                    </div>
+			<div class="gallery-item">
+                        <img src="7.jpg" alt="After 2">
+                    </div>
+		<div class="gallery-item">
+                        <img src="14.jpg" alt="After 3">
+                    </div>
+		<div class="gallery-item">
+                        <img src="15.jpg" alt="After 4">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="16.jpg" alt="After 5">
+                    </div>
+			<div class="gallery-item">
+                        <img src="19.jpg" alt="After 6">
+                    </div>
+		<div class="gallery-item">
+                        <img src="21.jpg" alt="After 7">
+                    </div>
+		<div class="gallery-item">
+                        <img src="22.jpg" alt="After 8">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="24.jpg" alt="After 9">
+                    </div>
+			<div class="gallery-item">
+                        <img src="25.jpg" alt="After 10">
+                    </div>
+		<div class="gallery-item">
+                        <img src="28.jpg" alt="After 11">
+                    </div>
+		<div class="gallery-item">
+                        <img src="2.jpg" alt="After 12">
+                    </div>
+		<div class="gallery-item">
+                        <img src="f1.jpg" alt="A">
+                    </div>
+		<div class="gallery-item">
+                        <img src="f2.jpg" alt="A">
+                    </div>
+		<div class="gallery-item">
+                        <img src="f3.jpg" alt="A">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="f4.jpg" alt="A">
+                    </div>
+			<div class="gallery-item">
+                        <img src="f5.jpg" alt="A">
+                    </div>
+		<div class="gallery-item">
+                        <img src="f6.jpg" alt="A">
+                    </div>
+		<div class="gallery-item">
+                        <img src="f7.jpg" alt="A">
+                    </div>
+		<div class="gallery-item">
+                        <img src="f8.jpg" alt="A">
+                    </div>
+		<div class="gallery-item">
+                        <img src="f9.jpg" alt="A">
+                    </div>
+		<div class="gallery-item">
+                        <img src="f10.jpg" alt="A">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="f11.jpg" alt="A">
+                    </div>
+			<div class="gallery-item">
+                        <img src="f12.jpg" alt="A">
+                    </div>
+		<div class="gallery-item">
+                        <img src="f13.jpg" alt="A">
+                    </div>
+		<div class="gallery-item">
+                        <img src="f14.jpg" alt="A">
+                    </div>
+		<div class="gallery-item">
+                        <img src="f15.jpg" alt="A">
+                    </div>
+                </div>
+                <div class="gallery" id="gallery2">
+		    <div class="gallery-item active">
+                        <img src="project1.jpg" alt="Project Image 1">
+                    </div>
+		    <div class="gallery-item">
+                        <img src="project7.jpg" alt="Project Image 7">
+                    </div>
+		<div class="gallery-item">
+                        <img src="3.jpg" alt="After 17">
+                    </div>
+		    <div class="gallery-item">
+                        <img src="4.jpg" alt="After 18">
+                    </div>
+		<div class="gallery-item">
+                        <img src="5.jpg" alt="After 19">
+                    </div>
+		<div class="gallery-item">
+                        <img src="6.jpg" alt="After 20">
+                    </div>
+		<div class="gallery-item">
+                        <img src="8.jpg" alt="After 21">
+                    </div>
+		<div class="gallery-item">
+                        <img src="9.jpg" alt="After 22">
+                    </div>
+		<div class="gallery-item">
+                        <img src="10.jpg" alt="After 23">
+                    </div>
+		<div class="gallery-item">
+                        <img src="11.jpg" alt="After 24">
+                    </div>
+		<div class="gallery-item">
+                        <img src="12.jpg" alt="After 25">
+                    </div>
+              	<div class="gallery-item">
+                        <img src="13.jpg" alt="After 26">
+                    </div>
+		<div class="gallery-item">
+                        <img src="17.jpg" alt="After 27">
+                    </div>
+		<div class="gallery-item">
+                        <img src="23.jpg" alt="After 28">
+                    </div>
+		<div class="gallery-item">
+                        <img src="27.jpg" alt="After 29">
+                    </div>
+		<div class="gallery-item">
+                        <img src="26.jpg" alt="After 30">
+                    </div>
+		<div class="gallery-item">
+                        <img src="29.jpg" alt="After 31">
+                    </div>
+		<div class="gallery-item">
+                        <img src="31.jpg" alt="After 35">
+                    </div>
+		<div class="gallery-item">
+                        <img src="32.jpg" alt="After 32">
+                    </div>
+		<div class="gallery-item">
+                        <img src="e1.jpg" alt="A">
+                    </div>
+		<div class="gallery-item">
+                        <img src="e2.jpg" alt="A">
+                    </div>
+		<div class="gallery-item">
+                        <img src="e3.jpg" alt="A">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="e4.jpg" alt="A">
+                    </div>
+			<div class="gallery-item">
+                        <img src="e5.jpg" alt="A">
+                    </div>
+		<div class="gallery-item">
+                        <img src="e6.jpg" alt="A">
+                    </div>
+		<div class="gallery-item">
+                        <img src="e7.jpg" alt="A">
+                    </div>
+		<div class="gallery-item">
+                        <img src="e8.jpg" alt="A">
+                    </div>
+		<div class="gallery-item">
+                        <img src="e9.jpg" alt="A">
+                    </div>
+		<div class="gallery-item">
+                        <img src="e10.jpg" alt="A">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="e11.jpg" alt="A">
+                    </div>
+			<div class="gallery-item">
+                        <img src="e12.jpg" alt="A">
+                    </div>
+		<div class="gallery-item">
+                        <img src="e13.jpg" alt="A">
+                    </div>
+		<div class="gallery-item">
+                        <img src="e14.jpg" alt="A">
+                    </div>
+		</div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p class="contact-info">Contact us: juanunico4358@gmail.com | Phone: 929-235-6685</p>
+    </footer>
+    
+    <script>
+        
+        
+        // Automatic slideshow for the gallery
+        function setUpSlideshow(galleryId) {
+            const gallery = document.getElementById(galleryId);
+            const items = gallery.getElementsByClassName('gallery-item');
+            let currentIndex = 0;
+            setInterval(() => {
+                items[currentIndex].classList.remove('active');
+                currentIndex = (currentIndex + 1) % items.length;
+                items[currentIndex].classList.add('active');
+            }, 3000); // Change image every 3 seconds
+        }
+
+        setUpSlideshow('aboutGallery');
+        setUpSlideshow('gallery1');
+        setUpSlideshow('gallery2');
+
+        const langButton = document.getElementById('langButton');
+        let isEnglish = true;
+
+        langButton.addEventListener('click', () => {
+             if (isEnglish) {
+        document.getElementById('navHome').textContent = 'Inicio';
+        document.getElementById('navAbout').textContent = 'Sobre Nosotros';
+        document.getElementById('navProjects').textContent = 'Proyectos';
+        document.getElementById('homeTitle').textContent = 'Inicio';
+        document.getElementById('homeText').textContent = 'Bienvenido a nuestro sitio web. Somos un pequeño equipo de construcción dedicado a la calidad y la excelencia.';
+        document.getElementById('aboutTitle').textContent = 'Sobre Nosotros';
+        document.getElementById('aboutText').textContent = 'Aprende más sobre nuestro equipo y nuestro trabajo.';
+        document.getElementById('projectsTitle').textContent = 'Proyectos';
+        document.getElementById('projectsText').textContent = 'Aquí están algunos de nuestros proyectos recientes.';
+        document.querySelector('.services-list p').textContent = 'Ofrecemos:';
+        document.querySelectorAll('.services-list ul li')[0].textContent = 'Cerámica';
+        document.querySelectorAll('.services-list ul li')[1].textContent = 'Pintura';
+        document.querySelectorAll('.services-list ul li')[2].textContent = 'Cinta';
+        document.querySelectorAll('.services-list ul li')[3].textContent = 'Tablaroca';
+        document.querySelectorAll('.services-list ul li')[4].textContent = 'Estructura';
+        document.querySelectorAll('.services-list ul li')[5].textContent = 'Electricidad';
+        document.querySelectorAll('.services-list ul li')[6].textContent = 'Plomería';
+        document.querySelectorAll('.services-list ul li')[7].textContent = 'Paneles de yeso';
+        document.querySelectorAll('.services-list ul li')[8].textContent = 'Carpintería';
+        document.querySelectorAll('.services-list ul li')[9].textContent = 'Baldosas';
+        document.querySelectorAll('.services-list ul li')[10].textContent = 'Y más...';
+        document.getElementById('beforeLabel').textContent = 'Durante';
+        document.getElementById('afterLabel').textContent = 'Después';
+        langButton.textContent = 'English';
+    } else {
+        document.getElementById('navHome').textContent = 'Home';
+        document.getElementById('navAbout').textContent = 'About Us';
+        document.getElementById('navProjects').textContent = 'Projects';
+        document.getElementById('homeTitle').textContent = 'Home';
+        document.getElementById('homeText').textContent = 'Welcome to our website. We are a small construction team dedicated to quality and excellence.';
+        document.getElementById('aboutTitle').textContent = 'About Us';
+        document.getElementById('aboutText').textContent = 'Learn more about our team and our work.';
+        document.getElementById('projectsTitle').textContent = 'Projects';
+        document.getElementById('projectsText').textContent = 'Here are some of our recent projects.';
+        document.querySelector('.services-list p').textContent = 'We offer:';
+        document.querySelectorAll('.services-list ul li')[0].textContent = 'Ceramic';
+        document.querySelectorAll('.services-list ul li')[1].textContent = 'Paint';
+        document.querySelectorAll('.services-list ul li')[2].textContent = 'Tape';
+        document.querySelectorAll('.services-list ul li')[3].textContent = 'Sheetrock';
+        document.querySelectorAll('.services-list ul li')[4].textContent = 'Frame';
+        document.querySelectorAll('.services-list ul li')[5].textContent = 'Electricity';
+        document.querySelectorAll('.services-list ul li')[6].textContent = 'Plumbing';
+        document.querySelectorAll('.services-list ul li')[7].textContent = 'Drywall';
+        document.querySelectorAll('.services-list ul li')[8].textContent = 'Carpentry';
+        document.querySelectorAll('.services-list ul li')[9].textContent = 'Tiles';
+        document.querySelectorAll('.services-list ul li')[10].textContent = 'And more...';
+        document.getElementById('beforeLabel').textContent = 'During';
+        document.getElementById('afterLabel').textContent = 'After';
+        langButton.textContent = 'Español';
+    }
+    isEnglish = !isEnglish;
+});
+
+        function startGalleryRotation(galleryId) {
+            const gallery = document.getElementById(galleryId);
+            const galleryItems = gallery.querySelectorAll('.gallery-item');
+            let currentIndex = 0;
+
+            function showNextItem() {
+                galleryItems[currentIndex].classList.remove('active');
+                currentIndex = (currentIndex + 1) % galleryItems.length;
+                galleryItems[currentIndex].classList.add('active');
+            }
+
+            setInterval(showNextItem, 3000);
+        }
+
+        startGalleryRotation('aboutGallery');
+        startGalleryRotation('gallery1');
+        startGalleryRotation('gallery2');
+
+        document.querySelectorAll('nav ul li a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                window.scrollTo({
+                    top: target.offsetTop - document.querySelector('header').offsetHeight,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+    </script>
+</body>
+</html>
+
+
